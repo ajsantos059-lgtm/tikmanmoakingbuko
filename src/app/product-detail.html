@@ -6,7 +6,7 @@
         @if (selectedProduct.image) {
           <img [src]="selectedProduct.image" [alt]="selectedProduct.name" />
         } @else if (selectedProduct.id === 'classic') {
-          <img src="/fresh-buko-juice.png" [alt]="selectedProduct.name" />
+          <img src="fresh-buko-juice.png" [alt]="selectedProduct.name" />
         } @else {
           <span aria-hidden="true">{{ selectedProduct.icon }}</span>
         }

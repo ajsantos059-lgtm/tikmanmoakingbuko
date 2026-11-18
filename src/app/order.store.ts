@@ -5,11 +5,11 @@ import { CartItem, Product, ShippingDetails } from './product.model';
 export class OrderStore {
   readonly products: Product[] = [
     { id: 'classic', name: 'Classic Buko', description: 'Fresh buko water, straight from the shell.', price: 35, category: 'Classics', icon: '🥥', color: '#edf2dd', tag: 'Bestseller' },
-    { id: 'pandan', name: 'Pandan Buko', description: 'A fragrant pandan twist on a local favorite.', price: 45, category: 'Classics', icon: '🍃', color: '#e8efda', image: '/pandan-buko.png' },
-    { id: 'melon', name: 'Buko Melon', description: 'Sweet melon meets cool, fresh coconut.', price: 50, category: 'Classics', icon: '🍈', color: '#f5edd5', image: '/buko-melon.png' },
-    { id: 'coco-jelly', name: 'Coco Jelly', description: 'Chilled buko juice with chewy nata de coco.', price: 50, category: 'Specials', icon: '🧋', color: '#eee8d7', image: '/coco-jelly.png', tag: 'Crowd fave' },
-    { id: 'mango', name: 'Mango Coco', description: 'Sunny mango and creamy young coconut.', price: 60, category: 'Specials', icon: '🥭', color: '#f6e8cd', image: '/mango-coco.png', tag: 'Tropical' },
-    { id: 'coco-cream', name: 'Coco Cream', description: 'A silky, creamy treat with real buko strips.', price: 65, category: 'Specials', icon: '🥛', color: '#eeeade', image: '/coco-cream.png' },
+    { id: 'pandan', name: 'Pandan Buko', description: 'A fragrant pandan twist on a local favorite.', price: 45, category: 'Classics', icon: '🍃', color: '#e8efda', image: 'pandan-buko.png' },
+    { id: 'melon', name: 'Buko Melon', description: 'Sweet melon meets cool, fresh coconut.', price: 50, category: 'Classics', icon: '🍈', color: '#f5edd5', image: 'buko-melon.png' },
+    { id: 'coco-jelly', name: 'Coco Jelly', description: 'Chilled buko juice with chewy nata de coco.', price: 50, category: 'Specials', icon: '🧋', color: '#eee8d7', image: 'coco-jelly.png', tag: 'Crowd fave' },
+    { id: 'mango', name: 'Mango Coco', description: 'Sunny mango and creamy young coconut.', price: 60, category: 'Specials', icon: '🥭', color: '#f6e8cd', image: 'mango-coco.png', tag: 'Tropical' },
+    { id: 'coco-cream', name: 'Coco Cream', description: 'A silky, creamy treat with real buko strips.', price: 65, category: 'Specials', icon: '🥛', color: '#eeeade', image: 'coco-cream.png' },
   ];
 
   readonly cartItems = signal<CartItem[]>([]);

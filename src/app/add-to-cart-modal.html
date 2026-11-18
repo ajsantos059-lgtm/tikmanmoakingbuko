@@ -9,7 +9,7 @@
         @if (product.image) {
           <img [src]="product.image" [alt]="product.name" />
         } @else if (product.id === 'classic') {
-          <img src="/fresh-buko-juice.png" [alt]="product.name" />
+          <img src="fresh-buko-juice.png" [alt]="product.name" />
         } @else {
           <span aria-hidden="true">{{ product.icon }}</span>
         }

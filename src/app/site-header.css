@@ -1,0 +1,24 @@
+:host { display: block; position: relative; z-index: 2; }
+.site-header { max-width: 1240px; height: 88px; margin: auto; padding: 0 42px; display: flex; align-items: center; justify-content: space-between; background: #fffefa; }
+.brand { display: inline-flex; gap: 10px; align-items: center; color: #173c2c; text-decoration: none; }
+.brand-mark { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; background: #d7ed9b; color: #244b34; font-family: Georgia, serif; font-size: 23px; font-weight: 700; font-style: italic; }
+.brand-name { font-family: Georgia, serif; font-size: 22px; font-weight: 700; letter-spacing: -.8px; }
+.brand-name span { color: #7d9c46; }
+nav { display: flex; align-items: center; gap: 38px; }
+nav a { color: #536057; font-size: 13px; font-weight: 600; text-decoration: none; transition: color .2s; }
+nav a:hover { color: #58833e; }
+.cart-button { min-height: 42px; display: inline-flex; align-items: center; gap: 10px; padding: 0 13px; border: 1px solid #e4e9dc; border-radius: 7px; background: transparent; color: #254333; font: inherit; cursor: pointer; transition: background .2s, border-color .2s; }
+.cart-button:hover { border-color: #aac37a; background: #f7faef; }
+.cart-label { font-size: 12px; font-weight: 650; }
+.cart-icon { font-size: 20px; line-height: 1; transform: rotate(180deg); }
+.cart-count { min-width: 20px; height: 20px; display: grid; place-items: center; padding: 0 5px; border-radius: 20px; background: #e8f0d7; color: #426232; font-size: 11px; font-weight: 700; }
+@media (max-width: 600px) {
+  .site-header { height: 72px; padding: 0 20px; }
+  nav { gap: 16px; }
+  nav a { font-size: 11px; }
+  .brand { gap: 7px; }
+  .brand-mark { width: 32px; height: 32px; }
+  .brand-name { font-size: 18px; }
+  .cart-button { padding: 0 9px; gap: 7px; }
+  .cart-label { display: none; }
+}

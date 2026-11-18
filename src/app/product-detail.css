@@ -1,0 +1,29 @@
+.detail-page { max-width: 1100px; min-height: calc(100vh - 165px); margin: 0 auto; padding: 34px 42px 70px; }
+.back-link { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 22px; color: #627650; font-size: 12px; font-weight: 650; text-decoration: none; }
+.back-link span { font-size: 17px; }
+.detail-card { display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; border: 1px solid #e8ece2; border-radius: 9px; background: #fff; box-shadow: 0 12px 35px #2036200a; }
+.detail-visual { position: relative; min-height: 430px; display: grid; place-items: center; overflow: hidden; background: var(--product-color, #edf2dd); }
+.detail-visual img { width: 100%; height: 100%; position: absolute; inset: 0; object-fit: cover; }
+.detail-visual > span:not(.detail-tag) { font-size: 110px; filter: drop-shadow(0 12px 8px #3c492522); }
+.detail-tag { position: absolute; z-index: 1; top: 20px; left: 20px; padding: 7px 10px; border-radius: 3px; background: #fffefa; color: #627745; font-size: 10px; font-weight: 750; letter-spacing: .8px; text-transform: uppercase; }
+.detail-copy { align-self: center; padding: 46px; }
+.eyebrow { margin: 0 0 13px; color: #7c9358; font-size: 9px; font-weight: 750; letter-spacing: 1.6px; }
+.detail-copy h1, .not-found h1 { margin: 0; color: #1b392d; font-family: Georgia, serif; font-size: clamp(32px, 4vw, 46px); font-weight: 500; letter-spacing: -1.5px; }
+.detail-description { margin: 14px 0 10px; color: #52664f; font-size: 15px; line-height: 1.7; }
+.detail-story { margin: 0; color: #838b7d; font-size: 12px; line-height: 1.8; }
+.detail-price { margin: 25px 0 15px; color: #416637; font-size: 24px; font-weight: 750; }
+.detail-price span { margin-left: 5px; color: #90978b; font-size: 11px; font-weight: 400; }
+.detail-add { width: 100%; height: 46px; display: flex; align-items: center; justify-content: space-between; padding: 0 15px; border: 0; border-radius: 4px; background: #486f39; color: #fff; font: inherit; font-size: 12px; font-weight: 700; cursor: pointer; }
+.detail-add:hover { background: #385d2d; }
+.detail-add span { font-size: 18px; font-weight: 400; }
+.detail-note { margin: 11px 0 0; color: #999f93; font-size: 10px; text-align: center; }
+.not-found { min-height: 65vh; display: grid; align-content: center; justify-items: center; gap: 12px; padding: 30px; text-align: center; }
+.not-found > span { font-size: 52px; }
+.not-found h1 { font-size: 30px; }
+.not-found a { color: #557642; font-size: 13px; }
+@media (max-width: 680px) {
+  .detail-page { padding: 24px 20px 50px; }
+  .detail-card { grid-template-columns: 1fr; }
+  .detail-visual { min-height: 280px; max-height: 350px; }
+  .detail-copy { padding: 28px 24px; }
+}

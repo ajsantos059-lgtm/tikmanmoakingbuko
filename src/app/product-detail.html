@@ -1,0 +1,34 @@
+@if (product; as selectedProduct) {
+  <main class="detail-page">
+    <a class="back-link" routerLink="/" fragment="menu"><span aria-hidden="true">←</span> Back to all drinks</a>
+    <section class="detail-card">
+      <div class="detail-visual" [style.--product-color]="selectedProduct.color">
+        @if (selectedProduct.image) {
+          <img [src]="selectedProduct.image" [alt]="selectedProduct.name" />
+        } @else if (selectedProduct.id === 'classic') {
+          <img src="/fresh-buko-juice.png" [alt]="selectedProduct.name" />
+        } @else {
+          <span aria-hidden="true">{{ selectedProduct.icon }}</span>
+        }
+        @if (selectedProduct.tag) { <span class="detail-tag">{{ selectedProduct.tag }}</span> }
+      </div>
+      <div class="detail-copy">
+        <p class="eyebrow">{{ selectedProduct.category }} · MADE FRESH TO ORDER</p>
+        <h1>{{ selectedProduct.name }}</h1>
+        <p class="detail-description">{{ selectedProduct.description }}</p>
+        <p class="detail-story">Made with fresh young coconut and carefully chosen ingredients. Chilled, refreshing, and prepared just for you.</p>
+        <div class="detail-price">₱{{ selectedProduct.price }} <span>per drink</span></div>
+        <button type="button" class="detail-add" (click)="orderStore.openAddModal(selectedProduct)">
+          Add to cart <span aria-hidden="true">→</span>
+        </button>
+        <p class="detail-note">Pickup is free · Delivery available for ₱49</p>
+      </div>
+    </section>
+  </main>
+} @else {
+  <main class="not-found">
+    <span aria-hidden="true">🥥</span>
+    <h1>We couldn't find that drink.</h1>
+    <a routerLink="/" fragment="menu">Back to the menu</a>
+  </main>
+}

@@ -1,0 +1,60 @@
+<section class="menu-section" aria-labelledby="menu-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow"><span class="eyebrow-dot"></span> THE GOOD STUFF</p>
+      <h2 id="menu-title">Made fresh.<br /><span>Made for you.</span></h2>
+    </div>
+    <p class="section-intro">Meet your new favorite sip. Every cup starts with fresh young coconut and a little extra love.</p>
+  </div>
+
+  <div class="menu-controls">
+    <div class="category-tabs" role="group" aria-label="Filter menu by category">
+      @for (category of categories; track category) {
+        <button type="button" [class.active]="activeCategory === category" (click)="activeCategory = category">
+          {{ category }}
+        </button>
+      }
+    </div>
+    <label class="search-box">
+      <span aria-hidden="true">⌕</span>
+      <input type="search" placeholder="Find your favorite..." aria-label="Search drinks" [(ngModel)]="searchTerm" />
+    </label>
+  </div>
+
+  <div class="product-grid">
+    @for (product of filteredProducts; track product.id) {
+      <article class="product-card">
+        <a
+          class="product-visual"
+          [style.--product-color]="product.color"
+          [routerLink]="['/product', product.id]"
+          [attr.aria-label]="'View ' + product.name + ' details'"
+        >
+          @if (product.image) {
+            <img [src]="product.image" [alt]="product.name" />
+          } @else if (product.id === 'classic') {
+            <img src="/fresh-buko-juice.png" [alt]="product.name" />
+          } @else {
+            <span class="product-emoji" aria-hidden="true">{{ product.icon }}</span>
+          }
+          @if (product.tag) { <span class="product-tag">{{ product.tag }}</span> }
+          <span class="product-number">{{ product.category === 'Specials' ? 'S' : 'B' }}</span>
+        </a>
+        <div class="product-info">
+          <div class="product-title-row"><h3>{{ product.name }}</h3><span class="product-price">₱{{ product.price }}</span></div>
+          <p>{{ product.description }}</p>
+          <button type="button" class="add-button" (click)="addToCart.emit(product)">
+            <span>Add to cart</span><span class="add-plus" aria-hidden="true">+</span>
+          </button>
+        </div>
+      </article>
+    } @empty {
+      <div class="empty-menu">
+        <span aria-hidden="true">🥥</span>
+        <strong>No sips found just yet.</strong>
+        <span>Try a different search or category.</span>
+      </div>
+    }
+  </div>
+  <p class="menu-footnote">All drinks are made to order · Prices in Philippine pesos</p>
+</section>

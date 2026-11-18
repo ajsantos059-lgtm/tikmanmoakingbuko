@@ -1,0 +1,15 @@
+<header class="site-header">
+  <a class="brand" href="#" aria-label="Buko Sarap home">
+    <span class="brand-mark">b.</span>
+    <span class="brand-name">buko<span>sarap</span></span>
+  </a>
+  <nav aria-label="Main navigation">
+    <a href="#menu">Our menu</a>
+    <a href="#about">Our story</a>
+  </nav>
+  <button class="cart-button" type="button" (click)="openCart.emit()">
+    <span class="cart-label">Your order</span>
+    <span class="cart-icon" aria-hidden="true">▱</span>
+    <span class="cart-count" aria-label="items in cart">{{ itemCount }}</span>
+  </button>
+</header>

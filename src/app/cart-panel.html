@@ -1,0 +1,66 @@
+<div class="backdrop" (click)="close.emit()" (keydown.escape)="close.emit()">
+  <aside class="cart-drawer" role="dialog" aria-modal="true" aria-labelledby="cart-title" (click)="$event.stopPropagation()">
+    <div class="drawer-header">
+      <div><p class="eyebrow">YOUR FRESH PICKS</p><h2 id="cart-title">Your order <span>({{ items.length }})</span></h2></div>
+      <button class="close-button" type="button" aria-label="Close order panel" (click)="close.emit()">×</button>
+    </div>
+
+    @if (items.length === 0) {
+      <div class="empty-cart">
+        <span class="empty-coconut" aria-hidden="true">🥥</span>
+        <h3>Your cart is looking a little empty.</h3>
+        <p>Pick a fresh favorite and it’ll show up here.</p>
+        <button type="button" class="continue-button" (click)="close.emit()">Browse the menu</button>
+      </div>
+    } @else {
+      <div class="cart-items">
+        @for (item of items; track item.product.id) {
+          <article class="cart-item">
+            <div class="item-icon" [style.--product-color]="item.product.color">
+              @if (item.product.image) {
+                <img [src]="item.product.image" [alt]="item.product.name" />
+              } @else {
+                {{ item.product.icon }}
+              }
+            </div>
+            <div class="item-details">
+              <h3>{{ item.product.name }}</h3>
+              <span>₱{{ item.product.price }} each</span>
+              <div class="quantity-control">
+                <button type="button" [attr.aria-label]="'Remove one ' + item.product.name" (click)="quantityChange.emit({ productId: item.product.id, delta: -1 })">−</button>
+                <span>{{ item.quantity }}</span>
+                <button type="button" [attr.aria-label]="'Add one ' + item.product.name" (click)="quantityChange.emit({ productId: item.product.id, delta: 1 })">+</button>
+              </div>
+            </div>
+            <div class="item-end">
+              <strong>₱{{ item.product.price * item.quantity }}</strong>
+              <button type="button" class="remove-button" [attr.aria-label]="'Remove ' + item.product.name" (click)="removeItem.emit(item.product.id)">Remove</button>
+            </div>
+          </article>
+        }
+      </div>
+
+      @if (shippingDetails; as details) {
+        <section class="shipping-summary" aria-label="Shipping details">
+          <div class="shipping-summary-heading">
+            <div><h3>{{ details.fulfillment }} details</h3><span>{{ details.name }} · {{ details.phone }}</span></div>
+            <button type="button" class="edit-shipping" (click)="editShipping.emit()">Edit</button>
+          </div>
+          @if (details.fulfillment === 'Delivery') {
+            <p>{{ details.address.street }}, Brgy. {{ details.address.barangay }}, {{ details.address.city }} {{ details.address.postalCode }}</p>
+          } @else {
+            <p>Free pickup · Ready in about 15 minutes</p>
+          }
+        </section>
+      }
+
+      <div class="order-summary">
+        <div><span>Subtotal</span><span>₱{{ subtotal }}</span></div>
+        <div><span>{{ fulfillment === 'Delivery' ? 'Delivery fee' : 'Pickup' }}</span><span>{{ deliveryFee ? '₱' + deliveryFee : 'Free' }}</span></div>
+        <div class="total-row"><strong>Total</strong><strong>₱{{ total }}</strong></div>
+      </div>
+      <button class="place-order" type="button" [disabled]="!shippingDetails" (click)="submitOrder()">Place my order <span aria-hidden="true">→</span></button>
+      <p class="secure-note">Freshly prepared just for you · Pay when you receive it</p>
+    }
+  </aside>
+</div>

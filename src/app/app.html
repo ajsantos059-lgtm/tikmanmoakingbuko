@@ -1,0 +1,43 @@
+<app-site-header
+  [itemCount]="orderStore.itemCount()"
+  (openCart)="openCart()"
+></app-site-header>
+
+<router-outlet></router-outlet>
+
+@if (cartOpen) {
+  <app-cart-panel
+    [items]="orderStore.cartItems()"
+    [shippingDetails]="orderStore.shippingDetails()"
+    (close)="cartOpen = false"
+    (quantityChange)="orderStore.changeQuantity($event.productId, $event.delta)"
+    (removeItem)="orderStore.removeFromCart($event)"
+    (editShipping)="editShippingDetails()"
+    (orderSubmitted)="completeOrder($event)"
+  ></app-cart-panel>
+}
+
+@if (shippingFormOpen) {
+  <app-shipping-details-modal
+    [initialDetails]="orderStore.shippingDetails()"
+    (close)="shippingFormOpen = false"
+    (continueToCart)="saveShippingDetails($event)"
+  ></app-shipping-details-modal>
+}
+
+@if (orderStore.pendingProduct(); as product) {
+  <app-add-to-cart-modal
+    [product]="product"
+    [initialDetails]="orderStore.shippingDetails()"
+    (close)="orderStore.closeAddModal()"
+    (confirmAdd)="confirmAddToCart($event)"
+  ></app-add-to-cart-modal>
+}
+
+@if (orderConfirmation) {
+  <div class="toast" role="status">
+    <span class="toast-icon">✓</span>
+    <div><strong>Salamat, {{ orderConfirmation.name }}!</strong><span>Your {{ orderConfirmation.fulfillment.toLowerCase() }} order is confirmed.</span></div>
+    <button type="button" aria-label="Dismiss confirmation" (click)="orderConfirmation = null">×</button>
+  </div>
+}

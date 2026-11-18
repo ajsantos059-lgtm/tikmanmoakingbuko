@@ -1,0 +1,56 @@
+<main>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <p class="eyebrow"><span class="eyebrow-dot"></span> FRESH FROM THE COCONUT</p>
+      <h1 id="hero-title">Preskong saya,<br />sa bawat <span>higop.</span></h1>
+      <p class="hero-description">
+        Real buko, real good. Your neighborhood favorite is freshly made and ready for your day.
+      </p>
+      <a class="primary-button hero-button" href="#menu">
+        Explore the menu <span aria-hidden="true">→</span>
+      </a>
+      <div class="hero-note">
+        <span class="note-stars" aria-label="5 stars">★★★★★</span>
+        <span>Made fresh daily, loved locally</span>
+      </div>
+    </div>
+    <div class="hero-art" aria-label="Fresh coconut water and young coconut">
+      <div class="hero-sun"></div>
+      <div class="hero-image-wrap">
+        <img src="/fresh-buko-juice.png" alt="Fresh young coconut ready to serve" />
+      </div>
+      <div class="fresh-stamp"><span>100%</span><small>fresh<br />buko</small></div>
+      <span class="hero-leaf leaf-one" aria-hidden="true">✳</span>
+      <span class="hero-leaf leaf-two" aria-hidden="true">✳</span>
+    </div>
+    <div class="hero-bottom">
+      <span>GOOD FOR YOU. GOOD TO THE LAST DROP.</span>
+      <span>LOCALLY SOURCED · ALWAYS FRESH</span>
+    </div>
+  </section>
+
+  <app-menu-section
+    id="menu"
+    [products]="orderStore.products"
+    (addToCart)="orderStore.openAddModal($event)"
+  ></app-menu-section>
+
+  <section class="promise-section" id="about">
+    <div class="promise-mark" aria-hidden="true">✳</div>
+    <div>
+      <p class="eyebrow">A LITTLE ABOUT US</p>
+      <h2>Simple ingredients.<br /><span>Big island energy.</span></h2>
+    </div>
+    <p class="promise-copy">
+      We keep it simple: young coconuts, good ingredients, and a whole lot of care.
+      Pick your favorite, choose pickup or delivery, and let the good stuff come to you.
+    </p>
+    <div class="promise-footer"><span>FRESHLY PREPPED</span><span>ALWAYS SARAP</span></div>
+  </section>
+
+  <footer class="site-footer">
+    <a class="footer-brand" routerLink="/" aria-label="Buko Sarap home"><span class="brand-mark">b.</span> buko sarap</a>
+    <span>Fresh buko, happy days. Made with love in the neighborhood.</span>
+    <a routerLink="/" fragment="menu">Back to menu ↑</a>
+  </footer>
+</main>

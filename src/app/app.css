@@ -1,0 +1,17 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  background: #fffefa;
+  color: #233d2e;
+}
+
+.toast { position: fixed; z-index: 30; right: 22px; bottom: 22px; display: flex; align-items: center; gap: 12px; padding: 15px 17px; border: 1px solid #dfe8d2; border-radius: 7px; background: #fffefa; box-shadow: 0 12px 35px #172a1f2e; }
+.toast-icon { width: 27px; height: 27px; display: grid; place-items: center; border-radius: 50%; background: #e7f0d7; color: #4c7339; font-weight: 700; }
+.toast div { display: grid; gap: 4px; }
+.toast strong { color: #2a4432; font-family: Georgia, serif; font-size: 13px; }
+.toast div span { color: #7a8375; font-size: 10px; }
+.toast button { align-self: start; padding: 0 0 0 7px; border: 0; background: transparent; color: #7d8678; font-size: 17px; cursor: pointer; }
+
+@media (max-width: 560px) {
+  .toast { right: 12px; bottom: 12px; left: 12px; }
+}

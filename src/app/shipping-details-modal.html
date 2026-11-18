@@ -1,0 +1,59 @@
+<div class="shipping-backdrop" (click)="close.emit()" (keydown.escape)="close.emit()">
+  <section class="shipping-modal" role="dialog" aria-modal="true" aria-labelledby="shipping-title" (click)="$event.stopPropagation()">
+    <button class="shipping-close" type="button" aria-label="Close shipping form" (click)="close.emit()">×</button>
+    <p class="eyebrow">ALMOST THERE</p>
+    <h2 id="shipping-title">Where should we bring it?</h2>
+    <p class="shipping-intro">Add your contact and delivery details before viewing your cart.</p>
+
+    <form #shippingForm="ngForm" (ngSubmit)="submit(shippingForm)" novalidate>
+      <fieldset class="fulfillment-options">
+        <legend>Choose how to receive your order</legend>
+        <label [class.selected]="fulfillment === 'Delivery'">
+          <input type="radio" name="fulfillment" value="Delivery" [(ngModel)]="fulfillment" />
+          <span><strong>Delivery</strong><small>₱49 · to your doorstep</small></span>
+        </label>
+        <label [class.selected]="fulfillment === 'Pickup'">
+          <input type="radio" name="fulfillment" value="Pickup" [(ngModel)]="fulfillment" />
+          <span><strong>Pickup</strong><small>Free · ready in 15 min</small></span>
+        </label>
+      </fieldset>
+
+      <div class="fields-grid">
+        <div class="field full-width">
+          <label for="shipping-name">Full name</label>
+          <input id="shipping-name" name="name" type="text" placeholder="e.g. Alex Santos" required minlength="2" [(ngModel)]="name" #nameInput="ngModel" />
+          @if (nameInput.invalid && nameInput.touched) { <span class="field-error">Enter your name (at least 2 characters).</span> }
+        </div>
+        <div class="field full-width">
+          <label for="shipping-phone">Mobile number</label>
+          <input id="shipping-phone" name="phone" type="tel" placeholder="e.g. 0917 123 4567" required minlength="7" pattern="[0-9+() -]{7,20}" [(ngModel)]="phone" #phoneInput="ngModel" />
+          @if (phoneInput.invalid && phoneInput.touched) { <span class="field-error">Enter a valid mobile number.</span> }
+        </div>
+        @if (fulfillment === 'Delivery') {
+          <div class="field full-width">
+            <label for="shipping-street">House number and street</label>
+            <input id="shipping-street" name="street" type="text" placeholder="House no., street name" required minlength="4" [(ngModel)]="street" #streetInput="ngModel" />
+            @if (streetInput.invalid && streetInput.touched) { <span class="field-error">Enter your house number and street.</span> }
+          </div>
+          <div class="field">
+            <label for="shipping-barangay">Barangay</label>
+            <input id="shipping-barangay" name="barangay" type="text" placeholder="Barangay" required minlength="2" [(ngModel)]="barangay" #barangayInput="ngModel" />
+            @if (barangayInput.invalid && barangayInput.touched) { <span class="field-error">Enter your barangay.</span> }
+          </div>
+          <div class="field">
+            <label for="shipping-city">City / municipality</label>
+            <input id="shipping-city" name="city" type="text" placeholder="City" required minlength="2" [(ngModel)]="city" #cityInput="ngModel" />
+            @if (cityInput.invalid && cityInput.touched) { <span class="field-error">Enter your city.</span> }
+          </div>
+          <div class="field full-width">
+            <label for="shipping-postal">Postal code</label>
+            <input id="shipping-postal" name="postalCode" type="text" inputmode="numeric" placeholder="4-digit postal code" required pattern="[0-9]{4}" [(ngModel)]="postalCode" #postalInput="ngModel" />
+            @if (postalInput.invalid && postalInput.touched) { <span class="field-error">Enter a valid 4-digit postal code.</span> }
+          </div>
+        }
+      </div>
+
+      <button class="continue-to-cart" type="submit">Continue to cart <span aria-hidden="true">→</span></button>
+    </form>
+  </section>
+</div>
